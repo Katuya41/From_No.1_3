@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <fstream>
 #include <sstream>
+#include <iostream>
 
 #include "LinkedList.h"
 
@@ -9,7 +10,7 @@ using namespace std;
 
 int main(void)
 {
-    LinkedList<string> List;
+    LinkedList<DATA> List;
 
     // 読み込むファイルの名前
 	std::ifstream file("Scores.txt"); 
@@ -20,17 +21,24 @@ int main(void)
 	}
 
     //受け取ったスコアと名前を入れておく変数
-    string Score, Name;
+    DATA Data;
 
-    while (file >> Score >> Name) {
+    while (file >> Data.Score >> Data.Name) {
         // 名前とスコアを表示(確認用)
         //printf("スコア: %s ,名前: %s \n", Score, Name);
         //リストの一番末尾に入れる
-        List.InsertLast(Score, Name);
+        List.InsertLast(Data);
     }
 
     //リストの中身を最初から末尾まで表示
-    List.display();
+    //Display(List);
+    LinkedList<DATA>::Iterator it;
+    it = List.GetBegin();
+    while (!it.CheckDammy()) {
+        printf("スコア: %s ,名前: %s \n", (*it).Score.c_str(), (*it).Name.c_str());
+        it++;
+        //++it;
+    }
 
 	return 0;
 }
