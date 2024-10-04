@@ -1,4 +1,6 @@
 #pragma once
+//#ifndef LINKED_LIST_H
+//#define LINKED_LIST_H
 //#include <string>
 
 #include "main.h"
@@ -45,8 +47,8 @@ public:
      * LinkedListクラスのコンストラクタ。
      * 初期化処理を行います。
      */
-    LinkedList() { 
-        Dammy.Next = Dammy.Prev = &Dammy; 
+    LinkedList() {
+        Dammy.Next = Dammy.Prev = &Dammy;
         Dammy.IsDammy = true;
     }
     ~LinkedList() {}
@@ -62,45 +64,14 @@ public:
     * @param _score  受け取ったデータのスコア
     * @param _name   受け取ったデータの名前
     */
-    void InsertFront(const T& _data)
-    {
-        //新しいノード作成
-        NODE* NewNode;
-        //データ入力
-        T Data;
-        Data.Score = _data.Score;
-        Data.Name = _data.Name;
-        //ノード作成
-        NewNode = new NODE();
-        NewNode->Data = Data;       
-        NewNode->Prev = &Dammy;       //新しいノードの前はダミー(先頭)
-        NewNode->Next = Dammy.Next;   //新しいノードの次はダミーの次(先頭だったノード)
-        Dammy.Next->Prev = NewNode;   //先頭だったノードの前を新しいノード
-        Dammy.Next = NewNode;
-        DataNum++;
-    }
+    bool InsertFront(const T& _data) { return InsertFrontInl(_data); }
 
     /**
     * 受け取ったデータをリストの末尾に格納する関数です。
     * @param _score  受け取ったデータのスコア
     * @param _name   受け取ったデータの名前
     */
-    void InsertLast(const T& _data)
-    {
-        //新しいノード作成
-        NODE* NewNode;
-        T Data;
-        Data.Score = _data.Score;
-        Data.Name = _data.Name;
-        //ノード作成
-        NewNode = new NODE();
-        NewNode->Data = Data;
-        NewNode->Prev = Dammy.Prev;   //新しいノードの前はダミー(末尾だったノード)
-        NewNode->Next = &Dammy;       //新しいノードの次はダミー
-        Dammy.Prev->Next = NewNode;   //末尾だったノードの次を新しいノード
-        Dammy.Prev = NewNode;
-        DataNum++;
-    }
+    bool InsertLast(const T& _data) { return InsertLastInl(_data); }
 
     /**
     * イテレータを使用してリストに格納する関数です。
@@ -108,79 +79,51 @@ public:
     * @param _score  受け取ったデータのスコア
     * @param _name   受け取ったデータの名前
     */
-    void Insert(Iterator _it, const T& _data)
-    {
-        //イテレータが空じゃないか確認
-        if (_it.IsEmpty())
-        {
-            //新しいノード作成
-            NODE* NewNode = new NODE();
-            T Data;
-            Data.Score = _data.Score;
-            Data.Name = _data.Name;
-            NewNode->Data = Data;
-            NewNode->Next = _it.Node;
-            NewNode->Prev = _it.Node->Prev;
-            _it.Node->Prev = NewNode;
-            DataNum++;
-        }
-    }
+    bool Insert(LinkedList<T>::Iterator& _it, const T& _data) { return InsertInl(_it, _data); }
+
+    /**
+    * コンストイテレータを使用してリストに格納する関数です。
+    * @param _it     受け取ったイテレータ
+    * @param _score  受け取ったデータのスコア
+    * @param _name   受け取ったデータの名前
+    */
+    bool Insert(LinkedList<T>::ConstIterator& _it, const T& _data) { return InsertInl(_it, _data); }
 
     /**
     * イテレータを使用してリストの要素を削除する関数です。
     * @param _it     受け取ったイテレータ
     */
-    void Delete(Iterator _it)
-    {
-        //イテレータが空じゃないか確認
-        if (_it.Node != nullptr)
-        {
-            _it.Node->Next->Prev = _it.Node->Prev;
-            _it.Node->Prev->Next = _it.Node->Next;
-            delete _it.Node;
-            DataNum--;
-        }
-    }
+    bool Delete(LinkedList<T>::Iterator& _it) { return DeleteInl(_it); }
+
+    /**
+    * コンストイテレータを使用してリストの要素を削除する関数です。
+    * @param _it     受け取ったイテレータ
+    */
+    bool Delete(ConstIterator& _it) { return DeleteInl(_it); }
 
     /*
     * 先頭イテレータを取得する関数です。
     * @return 先頭イテレータ
     */
-    LinkedList::Iterator GetBegin() {
-        Iterator it;
-        it.Node = Dammy.Next;
-        return it;
-    }
+   Iterator GetBegin() { return GetBeginInl(); }
 
     /*
     * 先頭コンストイテレータを取得する関数です。
     * @return 先頭コンストイテレータ
     */
-     LinkedList::ConstIterator GetBegin()const {
-         LinkedList::ConstIterator it;
-         it.Node = Dammy.Next;
-         return it;
-    }
+    ConstIterator GetConstBegin()const { return GetConstBeginInl(); }
 
-     /*
-     * 末尾イテレータを取得する関数です。
-     * @return 先頭イテレータ
-     */
-    LinkedList::Iterator GetEnd() {
-        Iterator it;
-        it.Node = Dammy.Prev;
-        return it;
-    }
+    /*
+    * 末尾イテレータを取得する関数です。
+    * @return 先頭イテレータ
+    */
+    Iterator GetEnd() { return GetEndInl(); }
 
     /*
      * 末尾コンストイテレータを取得する関数です。
      * @return 先頭イテレータ
      */
-    LinkedList::ConstIterator GetConstEnd() const {
-        LinkedList::ConstIterator it;
-        it.Node = Dammy.Prev;
-        return it;
-    }
+    ConstIterator GetConstEnd() const { return GetConstEndInl(); }
 
     /*
     * これはConstIteratorクラスの説明です。
@@ -195,7 +138,7 @@ public:
     private:
         friend class LinkedList;
 
-
+        
     protected:
         //ノード
         NODE* Node = nullptr;
@@ -394,4 +337,7 @@ public:
             return this->Node != _it.Node;
         }
     };
+
+    private:
+    #include "LinkedList.inl"
 };
