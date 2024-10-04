@@ -3,7 +3,7 @@
 //#define LINKED_LIST_H
 //#include <string>
 
-#include "main.h"
+#include "pch.h"
 
 /**
  * これはLinkedListクラスの説明です。
@@ -273,8 +273,6 @@ public:
          * @return 次のノードを取得したイテレータを返します
         */
         LinkedList::Iterator operator++() {
-            assert(Node != nullptr && "Iterator points to null!");
-            assert(Node->IsDammy != true && "Iterator points to Dammy!");
             this->Node = this->Node->Next;
             LinkedList::Iterator it;
             it.Node = this->Node;
@@ -286,8 +284,6 @@ public:
          * @return 次のノードを取得したイテレータを返します
         */
         LinkedList::Iterator operator++(int) {
-            assert(Node != nullptr && "Iterator points to null!");
-            assert(Node->IsDammy != true && "Iterator points to Dammy!");
             LinkedList::Iterator it;
             it.Node = this->Node;
             this->Node = this->Node->Next;
@@ -300,8 +296,6 @@ public:
          * @return 前ノードを取得したイテレータを返します
         */
         LinkedList::Iterator operator--() {
-            assert(Node != nullptr && "Iterator points to null!");
-            assert(Node->IsDammy != true && "Iterator points to Dammy!");
             this->Node = this->Node->Prev;
             LinkedList::Iterator it;
             it.Node = this->Node;
@@ -313,8 +307,6 @@ public:
          * @return 前のノードを取得したイテレータを返します
         */
         LinkedList::Iterator operator--(int) {
-            assert(Node != nullptr && "Iterator points to null!");
-            assert(Node->IsDammy != true && "Iterator points to Dammy!");
             LinkedList::Iterator it;
             it.Node = this->Node;
             this->Node = this->Node->Prev;
@@ -326,8 +318,6 @@ public:
          * @return イテレータの要素を返します
         */
         T operator*() {
-            assert(Node != nullptr && "Iterator points to null!");
-            assert(Node->IsDammy != true && "Iterator points to Dammy!");
             return this->Node->Data;
         }
 
