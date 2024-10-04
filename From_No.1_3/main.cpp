@@ -40,5 +40,7 @@ int main(void)
         //++it;
     }
 
+    file.close();
+
 	return 0;
 }
