@@ -67,8 +67,8 @@ namespace ex01_DataStructure
 		TEST(ListManualTest, TestInsertWhenConst)
 		{
 #if defined TT_TEST_INSERT_WHEN_CONST
-			const LinkedList list;
-			LinkedList::ConstIterator* it = new LinkedList::ConstIterator();
+			const LinkedList<T> list;
+			LinkedList<T>::ConstIterator it;
 			it = list.GetConstBegin();
 			list.Insert(it, 1);//ここでエラー
 #endif //TT_TEST_INSERT_WHEN_CONST
@@ -88,10 +88,10 @@ namespace ex01_DataStructure
 		TEST(ListManualTest, TestDeleteWhenConst)
 		{
 #if defined TT_TEST_INSERT_WHEN_CONST
-			const LinkedList list;
-			LinkedList::ConstIterator* it = new LinkedList::ConstIterator();
-			it = list.GetConstBegin();
-			list.Delete(it);//ここでエラー
+			const LinkedList<T> list;
+			LinkedList<T>::ConstIterator Constit;
+			Constit = list.GetConstBegin();
+			list.Delete(Constit);//ここでエラー
 #endif //TT_TEST_INSERT_WHEN_CONST
 			SUCCEED();
 		}
@@ -109,8 +109,8 @@ namespace ex01_DataStructure
 		TEST(ListManualTest, TestGetWhenConst)
 		{
 #if defined TT_TEST_INSERT_WHEN_CONST
-			const LinkedList list;
-			LinkedList::Iterator* it = new LinkedList::Iterator();
+			const LinkedList<T> list;
+			LinkedList<T>::Iterator it;
 			it = list.GetBegin();//エラー
 #endif //TT_TEST_INSERT_WHEN_CONST
 			SUCCEED();
@@ -129,9 +129,9 @@ namespace ex01_DataStructure
 		TEST(ListManualTest, TestCopyWhenConst)
 		{
 #if defined TT_TEST_INSERT_WHEN_CONST
-			const LinkedList list;
-			LinkedList::ConstIterator* Constit = new LinkedList::ConstIterator();
-			LinkedList::Iterator* it = new LinkedList::Iterator();
+			const LinkedList<T> list;
+			LinkedList<T>::ConstIterator Constit;
+			LinkedList<T>::Iterator it;
 			Constit->CopyConst(it);	//エラー
 #endif //TT_TEST_INSERT_WHEN_CONST
 			SUCCEED();
@@ -150,9 +150,9 @@ namespace ex01_DataStructure
 		TEST(ListManualTest, TestSetWhenConst)
 		{
 #if defined TT_TEST_INSERT_WHEN_CONST
-			const LinkedList list;
-			const LinkedList::ConstIterator* Constit = new LinkedList::ConstIterator();
-			LinkedList::Iterator* it = new LinkedList::Iterator();
+			const LinkedList<T> list;
+			const LinkedList<T>::ConstIterator Constit;
+			LinkedList<T>::Iterator it;
 			it = Constit;	//エラー
 #endif //TT_TEST_INSERT_WHEN_CONST
 			SUCCEED();
