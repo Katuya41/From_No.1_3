@@ -9,6 +9,6 @@
  */
 struct DATA
 {
-    std::string Score;
-    std::string Name;
+    int Score = 0;
+    std::string Name = "NULL";
 };

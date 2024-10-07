@@ -16,5 +16,5 @@
 struct DATA
 {
     int Score = 0;
-    std::string Name = "NULL";
+    std::string Name = "Dummy";
 };
