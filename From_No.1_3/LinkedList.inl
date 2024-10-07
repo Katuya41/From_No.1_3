@@ -56,32 +56,34 @@ bool InsertInl(ConstIterator& _it, const T& _data)
     return false;
 }
 
-    /**
-    * イテレータを使用してリストの要素を削除する関数です。
-    * @param _it     受け取ったイテレータ
-    */
+/**
+* イテレータを使用してリストの要素を削除する関数です。
+* @param _it     受け取ったイテレータ
+*/
 bool DeleteInl(Iterator& _it)
 {
     //イテレータが空じゃないか確認
-    if (_it.Node != nullptr)
+    if (!_it.IsEmpty())
     {
+        NODE* DeleteNode = _it.Node;
         _it.Node->Next->Prev = _it.Node->Prev;
         _it.Node->Prev->Next = _it.Node->Next;
         delete _it.Node;
         DataNum--;
+        _it.Node = DeleteNode->Next;
         return true;
     }
     return false;
 }
 
-    /**
-    * コンストイテレータを使用してリストの要素を削除する関数です。
-    * @param _it     受け取ったイテレータ
-    */
+/**
+* コンストイテレータを使用してリストの要素を削除する関数です。
+* @param _it     受け取ったイテレータ
+*/
 bool DeleteInl(ConstIterator& _it)
 {
     //イテレータが空じゃないか確認
-    if (_it.Node != nullptr)
+    if (!_it.IsEmpty())
     {
         _it.Node->Next->Prev = _it.Node->Prev;
         _it.Node->Prev->Next = _it.Node->Next;
@@ -98,7 +100,7 @@ bool DeleteInl(ConstIterator& _it)
     */
 Iterator GetBeginInl() {
     Iterator it;
-    it.Node = Dammy.Next;
+    it.Node = Dummy.Next;
     return it;
 }
 
@@ -108,7 +110,7 @@ Iterator GetBeginInl() {
 */
 ConstIterator GetConstBeginInl() const {
     LinkedList<T>::ConstIterator it;
-    it.Node = Dammy.Next;
+    it.Node = Dummy.Next;
     return it;
 }
 
@@ -118,7 +120,7 @@ ConstIterator GetConstBeginInl() const {
 */
 Iterator GetEndInl() {
     Iterator it;
-    it.Node = Dammy.Prev;
+    it.Node = &Dummy;
     return it;
 }
 
@@ -126,8 +128,30 @@ Iterator GetEndInl() {
  * 末尾コンストイテレータを取得する関数です。
  * @return 先頭イテレータ
  */
-ConstIterator GetConstEndInl() const {
+ConstIterator GetConstEndInl() {
     LinkedList<T>::ConstIterator it;
-    it.Node = Dammy.Prev;
+    it.Node = &Dummy;
     return it;
+}
+
+/*
+* ダミーノードか調べます
+* @return ノードがダミーノードかどうかを返します
+ */
+bool IsDummyInl(NODE* _node) {
+    if (&Dummy == _node)
+        return true;
+    else
+        return false;
+}
+
+/*
+* ダミーノードか調べます
+* @return ノードがダミーノードかどうかを返します
+*/
+bool IsDummyInl(ConstIterator _it) {
+    if (&Dummy == _it.Node)
+        return true;
+    else
+        return false;
 }

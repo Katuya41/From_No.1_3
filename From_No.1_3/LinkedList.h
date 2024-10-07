@@ -33,11 +33,10 @@ private:
         NODE* Prev = nullptr;     //一個前のノード
         NODE* Next = nullptr;     //次のノード
         T Data;             //データ
-        bool IsDammy = false;  //ダミーか
     };
 
     //ダミーノード
-    NODE Dammy;
+    NODE Dummy;
 
     //データの数
     int DataNum = 0;
@@ -48,8 +47,8 @@ public:
      * 初期化処理を行います。
      */
     LinkedList() {
-        Dammy.Next = Dammy.Prev = &Dammy;
-        Dammy.IsDammy = true;
+        Dummy.Next = Dummy.Prev = &Dummy;
+        //Dummy.T.Name = "Dummy";
     }
     ~LinkedList() {}
 
@@ -58,6 +57,12 @@ public:
      * 現在のデータ数を返します
      */
     int GetDataNum() { return DataNum; }
+
+    /**
+     * ダミーノードを取得する関数です。
+     * ダミーノードを返します
+     */
+    NODE* GetDummy() { return Dummy; }
 
     /**
     * イテレータを使用してリストに格納する関数です。
@@ -91,7 +96,7 @@ public:
     * 先頭イテレータを取得する関数です。
     * @return 先頭イテレータ
     */
-   Iterator GetBegin() { return GetBeginInl(); }
+    Iterator GetBegin() { return GetBeginInl(); }
 
     /*
     * 先頭コンストイテレータを取得する関数です。
@@ -109,7 +114,19 @@ public:
      * 末尾コンストイテレータを取得する関数です。
      * @return 先頭イテレータ
      */
-    ConstIterator GetConstEnd() const { return GetConstEndInl(); }
+    ConstIterator GetConstEnd() { return GetConstEndInl(); }
+
+    /*
+    * ダミーノードか調べます
+    * @return ノードがダミーノードかどうかを返します
+     */
+    bool IsDummy(NODE* _node) { return IsDummyInl(_node); }
+
+    /*
+    * ダミーノードか調べます
+    * @return ノードがダミーノードかどうかを返します
+    */
+    bool IsDummy(ConstIterator _it) { return IsDummyInl(_it); }
 
     /*
     * これはConstIteratorクラスの説明です。
@@ -242,7 +259,7 @@ public:
         */
         LinkedList::Iterator operator++() {
             //assert(Node != nullptr && "Iterator points to null!");
-            //assert(Node->IsDummy != true && "Iterator points to Dummy!");
+            //assert(Node->Data.Name != "Dummy" && "Iterator points to Dummy!");
             this->Node = this->Node->Next;
             return *this;
         }
@@ -253,12 +270,11 @@ public:
         */
         LinkedList::Iterator operator++(int) {
             //assert(Node != nullptr && "Iterator points to null!");
-            //assert(Node->IsDummy != true && "Iterator points to Dummy!");
+            //assert(Node->Data.Name != "Dummy" && "Iterator points to Dummy!");
             LinkedList::Iterator it;
             it.Node = this->Node;
             this->Node = this->Node->Next;
             return it;
-
         }
 
         /*
@@ -267,7 +283,7 @@ public:
         */
         LinkedList::Iterator operator--() {
             //assert(Node != nullptr && "Iterator points to null!");
-            //assert(Node->IsDummy != true && "Iterator points to Dummy!");
+            //assert(Node->Prev->Data.Name != "Dummy" && "Iterator points to Dummy!");
             this->Node = this->Node->Prev;
             return *this;
         }
@@ -278,7 +294,7 @@ public:
         */
         LinkedList::Iterator operator--(int) {
             //assert(Node != nullptr && "Iterator points to null!");
-            //assert(Node->IsDummy != true && "Iterator points to Dummy!");
+            //assert(Node->Prev->Data.Name != "Dummy" && "Iterator points to Dummy!");
             LinkedList::Iterator it;
             it.Node = this->Node;
             this->Node = this->Node->Prev;
@@ -291,7 +307,7 @@ public:
         */
         DATA operator*() {
             //assert(Node != nullptr && "Iterator points to null!");
-            //assert(Node->IsDummy != true && "Iterator points to Dummy!");
+            //assert(Node->Data.Name != "Dummy" && "Iterator points to Dummy!");
             return this->Node->Data;
         }
 
@@ -312,6 +328,6 @@ public:
         }
     };
 
-    private:
-    #include "LinkedList.inl"
+private:
+#include "LinkedList.inl"
 };
