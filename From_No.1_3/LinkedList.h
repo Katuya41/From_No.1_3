@@ -62,7 +62,7 @@ public:
     * @param _score  受け取ったデータのスコア
     * @param _name   受け取ったデータの名前
     */
-    bool Insert(LinkedList<T>::ConstIterator& _it, const T& _data);
+    bool Insert(LinkedList<T>::ConstIterator& _it,T& _data);
 
     /**
     * コンストイテレータを使用してリストの要素を削除する関数です。

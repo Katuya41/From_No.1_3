@@ -4,6 +4,7 @@
 //#include <string>
 
 #include"pch.h"
+#include <cassert>
 
 /**
  * これはLinkedListクラスの説明です。
@@ -61,7 +62,7 @@ public:
     * @param _score  受け取ったデータのスコア
     * @param _name   受け取ったデータの名前
     */
-    bool Insert(LinkedList<T>::ConstIterator& _it, const T& _data);
+    bool Insert(LinkedList<T>::ConstIterator& _it, T _data);
 
     /**
     * コンストイテレータを使用してリストの要素を削除する関数です。
@@ -75,35 +76,35 @@ public:
     */
     LinkedList<T>::Iterator GetBegin();
 
-        /*
-        * 先頭コンストイテレータを取得する関数です。
-        * @return 先頭コンストイテレータ
-        */
-        LinkedList<T>::ConstIterator GetConstBegin()const ;
+    /*
+    * 先頭コンストイテレータを取得する関数です。
+    * @return 先頭コンストイテレータ
+    */
+    LinkedList<T>::ConstIterator GetConstBegin()const;
 
-        /*
-        * 末尾イテレータを取得する関数です。
-        * @return ダミーノード
-        */
-        LinkedList<T>::Iterator GetEnd();
+    /*
+    * 末尾イテレータを取得する関数です。
+    * @return ダミーノード
+    */
+    LinkedList<T>::Iterator GetEnd();
 
-        /*
-        * 末尾イテレータを取得する関数です。
-        * @return 末尾イテレータ
-        */
-        LinkedList<T>::Iterator Getend();
+    /*
+    * 末尾イテレータを取得する関数です。
+    * @return 末尾イテレータ
+    */
+    LinkedList<T>::Iterator Getend();
 
-        /*
-         * 末尾コンストイテレータを取得する関数です。
-         * @return ダミーノード
-         */
-        LinkedList<T>::ConstIterator GetConstEnd();
+    /*
+     * 末尾コンストイテレータを取得する関数です。
+     * @return ダミーノード
+     */
+    LinkedList<T>::ConstIterator GetConstEnd();
 
-        /*
-         * 末尾コンストイテレータを取得する関数です。
-         * @return 末尾イテレータ
-         */
-        LinkedList<T>::ConstIterator GetConstend();
+    /*
+     * 末尾コンストイテレータを取得する関数です。
+     * @return 末尾イテレータ
+     */
+    LinkedList<T>::ConstIterator GetConstend();
 
     /*
     * これはConstIteratorクラスの説明です。
@@ -164,7 +165,7 @@ public:
          * コピ－コンストラクタです
         */
         LinkedList::ConstIterator(const LinkedList::ConstIterator& _constit) : Node(_constit.Node) {}
-        
+
         /*
          * 代入するオペレータです
          *@return コンストイテレータを返します
@@ -203,30 +204,6 @@ public:
         LinkedList::Iterator() {}
 
         //オペレータ
-        ///*
-        // * イテレータを末尾に向かって進めるオペレータです(前置インクリメント)
-        // * @return 次のノードを取得したイテレータを返します
-        //*/
-        //LinkedList::Iterator& operator++();
-
-        ///*
-        // * イテレータを末尾に向かって進めるオペレータです(後置インクリメント)
-        // * @return 次のノードを取得したイテレータを返します
-        //*/
-        //LinkedList::Iterator operator++(int);
-
-        ///*
-        // * イテレータを先頭に向かって進めるオペレータです(前置インクリメント)
-        // * @return 前ノードを取得したイテレータを返します
-        //*/
-        //LinkedList::Iterator& operator--();
-
-        ///*
-        // * イテレータを先頭に向かって進めるオペレータです(後置インクリメント)
-        // * @return 前のノードを取得したイテレータを返します
-        //*/
-        //LinkedList::Iterator operator--(int);
-
         /*
          * イテレータのさす要素を取得する(非const)関数です。
          * @return イテレータの要素を返します

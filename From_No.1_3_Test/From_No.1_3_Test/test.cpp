@@ -37,9 +37,14 @@ namespace ex01_DataStructure
 		 *//***********************************************************************************/
 		TEST(GetDataNumTest, TestGetDataNumAfterPush)
 		{
-			LinkedList<DATA> list;
-			LinkedList<DATA>::Iterator it = list.GetBegin();
-			list.Insert(it, {1, "Test"});
+			//LinkedList<DATA> list;
+			//LinkedList<DATA>::Iterator it = list.GetBegin();
+			//list.Insert(it, {1, "Test"});
+			//EXPECT_EQ(1, list.GetDataNum());
+
+			LinkedList<int> list;
+			LinkedList<int>::Iterator it = list.GetBegin();
+			list.Insert(it, 1);
 			EXPECT_EQ(1, list.GetDataNum());
 		}
 

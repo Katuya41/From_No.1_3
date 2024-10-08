@@ -15,17 +15,14 @@ int LinkedList<T>::GetDataNum() const { return DataNum; }
     * @param _name   受け取ったデータの名前
     */
 template <typename T>
-bool LinkedList<T>::Insert(LinkedList<T>::ConstIterator& _it, const T& _data)
+bool LinkedList<T>::Insert(LinkedList<T>::ConstIterator& _it, T& _data)
 {
     //イテレータが空じゃないか確認
     if (!_it.IsEmpty())
     {
         //新しいノード作成
         NODE* NewNode = new NODE();
-        T* Data = new T();
-        Data->Score = _data.Score;
-        Data->Name = _data.Name;
-        NewNode->Data = Data;
+        NewNode->Data = new T(_data);
         NewNode->Next = _it.Node;
         NewNode->Prev = _it.Node->Prev;
         _it.Node->Prev->Next = NewNode;
@@ -45,7 +42,7 @@ template <typename T>
 bool LinkedList<T>::Delete(LinkedList<T>::ConstIterator& _it)
 {
     //イテレータが空じゃないか確認
-    if (!_it.IsEmpty())
+    if (!_it->IsEmpty())
     {
         _it.Node->Next->Prev = _it.Node->Prev;
         _it.Node->Prev->Next = _it.Node->Next;
