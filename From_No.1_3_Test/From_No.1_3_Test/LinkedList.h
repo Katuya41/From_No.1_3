@@ -135,7 +135,7 @@ public:
          * イテレータを末尾に向かって進めるオペレータです(前置インクリメント)
          * @return 次のノードを取得したイテレータを返します
         */
-        LinkedList::ConstIterator operator++();
+        LinkedList::ConstIterator& operator++();
 
         /*
          * イテレータを末尾に向かって進めるオペレータです(後置インクリメント)
@@ -147,7 +147,7 @@ public:
          * イテレータを先頭に向かって進めるオペレータです(前置インクリメント)
          * @return 前ノードを取得したイテレータを返します
         */
-        LinkedList::ConstIterator operator--();
+        LinkedList::ConstIterator& operator--();
 
         /*
          * イテレータを先頭に向かって進めるオペレータです(後置インクリメント)

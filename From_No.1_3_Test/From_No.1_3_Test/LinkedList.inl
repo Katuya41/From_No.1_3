@@ -137,9 +137,9 @@ typename bool LinkedList<T>::ConstIterator::IsEmpty() { return Node == nullptr; 
  * @return 次のノードを取得したイテレータを返します
 */
 template <typename T>
-typename LinkedList<T>::ConstIterator LinkedList<T>::ConstIterator::operator++() 
+typename LinkedList<T>::ConstIterator& LinkedList<T>::ConstIterator::operator++() 
 {
-    this->Node = Node->Next;
+    this->Node = this->Node->Next;
     return *this;
 }
 
@@ -151,8 +151,8 @@ template <typename T>
 typename LinkedList<T>::ConstIterator LinkedList<T>::ConstIterator::operator++(int)
 {
     LinkedList::Iterator it;
-    it.Node = Node;
-    Node = Node->Next;
+    it.Node = this->Node;
+    this->Node = this->Node->Next;
     return it;
 }
 
@@ -161,8 +161,8 @@ typename LinkedList<T>::ConstIterator LinkedList<T>::ConstIterator::operator++(i
  * @return 前ノードを取得したイテレータを返します
 */
 template <typename T>
-typename LinkedList<T>::ConstIterator LinkedList<T>::ConstIterator::operator--() {
-    this->Node = Node->Prev;
+typename LinkedList<T>::ConstIterator& LinkedList<T>::ConstIterator::operator--() {
+    this->Node = this->Node->Prev;
     return *this;
 }
 
@@ -173,8 +173,8 @@ typename LinkedList<T>::ConstIterator LinkedList<T>::ConstIterator::operator--()
 template <typename T>
 typename LinkedList<T>::ConstIterator LinkedList<T>::ConstIterator::operator--(int) {
     LinkedList::Iterator it;
-    it.Node = Node;
-    Node = Node->Prev;
+    it.Node = this->Node;
+    this->Node = this->Node->Prev;
     return it;
 }
 
