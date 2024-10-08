@@ -39,7 +39,7 @@ int main(void)
     it = List.GetBegin();
     for (it == List.GetBegin(); it != List.GetEnd(); it++)
     {
-        printf("スコア: %d ,名前: %s \n", (*it)->Score, (*it)->Name.c_str());
+        printf("スコア: %d ,名前: %s \n", (*it).Score, (*it).Name.c_str());
     }
 
     file.close();

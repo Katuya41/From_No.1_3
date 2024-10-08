@@ -83,15 +83,27 @@ public:
 
         /*
         * 末尾イテレータを取得する関数です。
-        * @return 先頭イテレータ
+        * @return ダミーノード
         */
         LinkedList<T>::Iterator GetEnd();
 
         /*
+        * 末尾イテレータを取得する関数です。
+        * @return 末尾イテレータ
+        */
+        LinkedList<T>::Iterator Getend();
+
+        /*
          * 末尾コンストイテレータを取得する関数です。
-         * @return 先頭イテレータ
+         * @return ダミーノード
          */
         LinkedList<T>::ConstIterator GetConstEnd();
+
+        /*
+         * 末尾コンストイテレータを取得する関数です。
+         * @return 末尾イテレータ
+         */
+        LinkedList<T>::ConstIterator GetConstend();
 
     /*
     * これはConstIteratorクラスの説明です。
@@ -147,7 +159,7 @@ public:
          * イテレータのさす要素を取得するオペレータ(const)です
          * @return ノードを返します
         */
-        const T* operator*() const;
+        const T& operator*() const;
         /*
          * コピ－コンストラクタです
         */
@@ -195,7 +207,7 @@ public:
          * イテレータを末尾に向かって進めるオペレータです(前置インクリメント)
          * @return 次のノードを取得したイテレータを返します
         */
-        LinkedList::Iterator operator++();
+        LinkedList::Iterator& operator++();
 
         /*
          * イテレータを末尾に向かって進めるオペレータです(後置インクリメント)
@@ -207,7 +219,7 @@ public:
          * イテレータを先頭に向かって進めるオペレータです(前置インクリメント)
          * @return 前ノードを取得したイテレータを返します
         */
-        LinkedList::Iterator operator--();
+        LinkedList::Iterator& operator--();
 
         /*
          * イテレータを先頭に向かって進めるオペレータです(後置インクリメント)
@@ -219,7 +231,7 @@ public:
          * イテレータのさす要素を取得する(非const)関数です。
          * @return イテレータの要素を返します
         */
-        T* operator*();
+        T& operator*();
 
         /*
          * 比較するオペレータです

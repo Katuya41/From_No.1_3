@@ -11,6 +11,8 @@
 //自動テストコード
 namespace ex01_DataStructure
 {
+	namespace chapter2
+	{
 
 		//=================================== データ数の取得 ===================================
 
@@ -37,7 +39,7 @@ namespace ex01_DataStructure
 		{
 			LinkedList<DATA> list;
 			LinkedList<DATA>::Iterator it = list.GetBegin();
-			list.Insert(it, { 1,"Test" });
+			list.Insert(it, {1, "Test"});
 			EXPECT_EQ(1, list.GetDataNum());
 		}
 
@@ -68,7 +70,7 @@ namespace ex01_DataStructure
 		{
 			LinkedList<DATA> list;
 			LinkedList<DATA>::Iterator it = list.GetBegin();
-			list.Insert(it, { 10,"Test" });
+			list.Insert(it, {10, "Test"});
 			EXPECT_EQ(1, list.GetDataNum());
 		}
 
@@ -98,7 +100,7 @@ namespace ex01_DataStructure
 		{
 			LinkedList<DATA> list;
 			LinkedList<DATA>::Iterator Testit = list.GetBegin();
-			list.Insert(Testit, { 1,"Test" });
+			list.Insert(Testit, {1, "Test"});
 			Testit = list.GetBegin();
 			list.Delete(Testit);
 			EXPECT_EQ(0, list.GetDataNum());
@@ -150,7 +152,7 @@ namespace ex01_DataStructure
 		{
 			LinkedList<DATA> list;
 			LinkedList<DATA>::Iterator it = list.GetBegin();
-			list.Insert(it, { 10,"Test" });
+			list.Insert(it, {10, "Test"});
 			it = list.GetEnd();
 			EXPECT_EQ(it, list.GetEnd());
 		}
@@ -166,8 +168,8 @@ namespace ex01_DataStructure
 		{
 			LinkedList<DATA> list;
 			LinkedList<DATA>::Iterator it = list.GetBegin();
-			list.Insert(it, { 10,"Test" });
-			list.Insert(it, { 20,"Test" });
+			list.Insert(it, {10, "Test"});
+			list.Insert(it, {20, "Test"});
 			it = list.GetBegin();
 			EXPECT_EQ(it, list.GetBegin());
 		}
@@ -183,9 +185,9 @@ namespace ex01_DataStructure
 		{
 			LinkedList<DATA> list;
 			LinkedList<DATA>::Iterator it;
-			list.Insert(it, { 10,"Test" });
-			list.Insert(it, { 20,"Test" });
-			list.Insert(it, { 30,"Test" });
+			list.Insert(it, {10, "Test"});
+			list.Insert(it, {20, "Test"});
+			list.Insert(it, {30, "Test"});
 			it = list.GetEnd();
 			EXPECT_EQ(it, list.GetEnd());
 		}
@@ -201,9 +203,9 @@ namespace ex01_DataStructure
 		{
 			LinkedList<DATA> list;
 			LinkedList<DATA>::Iterator it = list.GetBegin();
-			list.Insert(it, { 10,"Test" });
-			list.Insert(it, { 20,"Test" });
-			list.Insert(it, { 30,"Test" });
+			list.Insert(it, {10, "Test"});
+			list.Insert(it, {20, "Test"});
+			list.Insert(it, {30, "Test"});
 			EXPECT_EQ(3, list.GetDataNum());
 		}
 
@@ -219,10 +221,10 @@ namespace ex01_DataStructure
 			LinkedList<DATA> list;
 			LinkedList<DATA>::Iterator it;
 			it = list.GetBegin();
-			EXPECT_EQ(true, list.Insert(it, { 10,"Test" }));
+			EXPECT_EQ(true, list.Insert(it, {10, "Test"}));
 			it = list.GetEnd();
-			EXPECT_EQ(true, list.Insert(it, { 20,"Test" }));
-			EXPECT_EQ(true, list.Insert(it, { 30,"Test" }));
+			EXPECT_EQ(true, list.Insert(it, {20, "Test"}));
+			EXPECT_EQ(true, list.Insert(it, {30, "Test"}));
 		}
 
 		/**********************************************************************************//**
@@ -236,7 +238,7 @@ namespace ex01_DataStructure
 		{
 			LinkedList<DATA> list;
 			LinkedList<DATA>::Iterator it;
-			EXPECT_EQ(false, list.Insert(it, { 10,"Test" }));
+			EXPECT_EQ(false, list.Insert(it, {10, "Test"}));
 		}
 
 		/**********************************************************************************//**
@@ -265,8 +267,8 @@ namespace ex01_DataStructure
 		{
 			LinkedList<DATA> list;
 			LinkedList<DATA>::Iterator it = list.GetBegin();
-			list.Insert(it, { 10,"Test" });
-			list.Insert(it, { 20,"Test" });
+			list.Insert(it, {10, "Test"});
+			list.Insert(it, {20, "Test"});
 			it = list.GetBegin();
 			EXPECT_EQ(true, list.Delete(it));
 		}
@@ -282,10 +284,9 @@ namespace ex01_DataStructure
 		{
 			LinkedList<DATA> list;
 			LinkedList<DATA>::Iterator it = list.GetBegin();
-			list.Insert(it, { 10,"Test" });
-			list.Insert(it, { 20,"Test" });
-			it = list.GetEnd();
-			it--;
+			list.Insert(it, {10, "Test"});
+			list.Insert(it, {20, "Test"});
+			it = list.Getend();
 			EXPECT_EQ(true, list.Delete(it));
 		}
 
@@ -300,10 +301,10 @@ namespace ex01_DataStructure
 		{
 			LinkedList<DATA> list;
 			LinkedList<DATA>::Iterator it = list.GetBegin();
-			list.Insert(it, { 10,"Test" });
-			list.Insert(it, { 20,"Test" });
-			list.Insert(it, { 30,"Test" });
-			list.Insert(it, { 40,"Test" });
+			list.Insert(it, {10, "Test"});
+			list.Insert(it, {20, "Test"});
+			list.Insert(it, {30, "Test"});
+			list.Insert(it, {40, "Test"});
 			it = list.GetBegin();
 			it++;
 			EXPECT_EQ(true, list.Delete(it));
@@ -320,8 +321,8 @@ namespace ex01_DataStructure
 		{
 			LinkedList<DATA> list;
 			LinkedList<DATA>::Iterator it = list.GetBegin();
-			list.Insert(it, { 10,"Test" });
-			list.Insert(it, { 20,"Test" });
+			list.Insert(it, {10, "Test"});
+			list.Insert(it, {20, "Test"});
 			it = list.GetBegin();
 			EXPECT_EQ(true, list.Delete(it));
 		}
@@ -365,7 +366,7 @@ namespace ex01_DataStructure
 		{
 			LinkedList<DATA> list;
 			LinkedList<DATA>::Iterator it = list.GetBegin();
-			list.Insert(it, { 10,"Test" });
+			list.Insert(it, {10, "Test"});
 			it = list.GetBegin();
 			EXPECT_EQ(it, list.GetBegin());
 		}
@@ -381,8 +382,8 @@ namespace ex01_DataStructure
 		{
 			LinkedList<DATA> list;
 			LinkedList<DATA>::Iterator it = list.GetBegin();
-			list.Insert(it, { 10,"Test" });
-			list.Insert(it, { 20,"Test" });
+			list.Insert(it, {10, "Test"});
+			list.Insert(it, {20, "Test"});
 			it = list.GetBegin();
 			EXPECT_EQ(it, list.GetBegin());
 		}
@@ -398,8 +399,8 @@ namespace ex01_DataStructure
 		{
 			LinkedList<DATA> list;
 			LinkedList<DATA>::Iterator it = list.GetBegin();
-			list.Insert(it, { 10,"Test" });
-			list.Insert(it, { 20,"Test" });
+			list.Insert(it, {10, "Test"});
+			list.Insert(it, {20, "Test"});
 			it = list.GetBegin();
 			EXPECT_EQ(it, list.GetBegin());
 		}
@@ -415,8 +416,8 @@ namespace ex01_DataStructure
 		{
 			LinkedList<DATA> list;
 			LinkedList<DATA>::Iterator it = list.GetBegin();
-			list.Insert(it, { 10,"Test" });
-			list.Insert(it, { 20,"Test" });
+			list.Insert(it, {10, "Test"});
+			list.Insert(it, {20, "Test"});
 			it = list.GetBegin();
 			list.Delete(it);
 			it = list.GetBegin();
@@ -449,7 +450,7 @@ namespace ex01_DataStructure
 		{
 			LinkedList<DATA> list;
 			LinkedList<DATA>::ConstIterator Constit = list.GetBegin();
-			list.Insert(Constit, { 10,"Test" });
+			list.Insert(Constit, {10, "Test"});
 			Constit = list.GetConstBegin();
 			EXPECT_EQ(Constit, list.GetConstBegin());
 		}
@@ -465,8 +466,8 @@ namespace ex01_DataStructure
 		{
 			LinkedList<DATA> list;
 			LinkedList<DATA>::ConstIterator Constit = list.GetBegin();
-			list.Insert(Constit, { 10,"Test" });
-			list.Insert(Constit, { 20,"Test" });
+			list.Insert(Constit, {10, "Test"});
+			list.Insert(Constit, {20, "Test"});
 			Constit = list.GetConstBegin();
 			EXPECT_EQ(Constit, list.GetConstBegin());
 		}
@@ -482,8 +483,8 @@ namespace ex01_DataStructure
 		{
 			LinkedList<DATA> list;
 			LinkedList<DATA>::ConstIterator Constit = list.GetBegin();
-			list.Insert(Constit, { 10,"Test" });
-			list.Insert(Constit, { 20,"Test" });
+			list.Insert(Constit, {10, "Test"});
+			list.Insert(Constit, {20, "Test"});
 			Constit = list.GetConstBegin();
 			EXPECT_EQ(Constit, list.GetConstBegin());
 		}
@@ -500,8 +501,8 @@ namespace ex01_DataStructure
 			LinkedList<DATA> list;
 			LinkedList<DATA>::Iterator it;
 			LinkedList<DATA>::ConstIterator Constit = list.GetBegin();
-			list.Insert(Constit, { 10,"Test" });
-			list.Insert(Constit, { 20,"Test" });
+			list.Insert(Constit, {10, "Test"});
+			list.Insert(Constit, {20, "Test"});
 			it = list.GetBegin();
 			list.Delete(it);
 			Constit = list.GetConstBegin();
@@ -534,7 +535,7 @@ namespace ex01_DataStructure
 		{
 			LinkedList<DATA> list;
 			LinkedList<DATA>::Iterator it = list.GetBegin();
-			list.Insert(it, { 10,"Test" });
+			list.Insert(it, {10, "Test"});
 			it = list.GetEnd();
 			EXPECT_EQ(it, list.GetEnd());
 		}
@@ -550,8 +551,8 @@ namespace ex01_DataStructure
 		{
 			LinkedList<DATA> list;
 			LinkedList<DATA>::Iterator it = list.GetBegin();
-			list.Insert(it, { 10,"Test" });
-			list.Insert(it, { 20,"Test" });
+			list.Insert(it, {10, "Test"});
+			list.Insert(it, {20, "Test"});
 			it = list.GetEnd();
 			EXPECT_EQ(it, list.GetEnd());
 		}
@@ -567,8 +568,8 @@ namespace ex01_DataStructure
 		{
 			LinkedList<DATA> list;
 			LinkedList<DATA>::Iterator it = list.GetBegin();
-			list.Insert(it, { 10,"Test" });
-			list.Insert(it, { 20,"Test" });
+			list.Insert(it, {10, "Test"});
+			list.Insert(it, {20, "Test"});
 			it = list.GetEnd();
 			EXPECT_EQ(it, list.GetEnd());
 		}
@@ -584,8 +585,8 @@ namespace ex01_DataStructure
 		{
 			LinkedList<DATA> list;
 			LinkedList<DATA>::Iterator it = list.GetBegin();
-			list.Insert(it, { 10,"Test" });
-			list.Insert(it, { 20,"Test" });
+			list.Insert(it, {10, "Test"});
+			list.Insert(it, {20, "Test"});
 			it = list.GetBegin();
 			list.Delete(it);
 			it = list.GetEnd();
@@ -618,7 +619,7 @@ namespace ex01_DataStructure
 		{
 			LinkedList<DATA> list;
 			LinkedList<DATA>::ConstIterator Constit = list.GetBegin();
-			list.Insert(Constit, { 10,"Test" });
+			list.Insert(Constit, {10, "Test"});
 			Constit = list.GetConstEnd();
 			EXPECT_EQ(Constit, list.GetConstEnd());
 		}
@@ -634,8 +635,8 @@ namespace ex01_DataStructure
 		{
 			LinkedList<DATA> list;
 			LinkedList<DATA>::ConstIterator Constit = list.GetBegin();
-			list.Insert(Constit, { 10,"Test" });
-			list.Insert(Constit, { 20,"Test" });
+			list.Insert(Constit, {10, "Test"});
+			list.Insert(Constit, {20, "Test"});
 			Constit = list.GetConstEnd();
 			EXPECT_EQ(Constit, list.GetConstEnd());
 		}
@@ -651,8 +652,8 @@ namespace ex01_DataStructure
 		{
 			LinkedList<DATA> list;
 			LinkedList<DATA>::Iterator it = list.GetBegin();
-			list.Insert(it, { 10,"Test" });
-			list.Insert(it, { 20,"Test" });
+			list.Insert(it, {10, "Test"});
+			list.Insert(it, {20, "Test"});
 			LinkedList<DATA>::ConstIterator Constit = list.GetConstEnd();
 			EXPECT_EQ(Constit, list.GetConstEnd());
 		}
@@ -668,8 +669,8 @@ namespace ex01_DataStructure
 		{
 			LinkedList<DATA> list;
 			LinkedList<DATA>::Iterator it = list.GetBegin();
-			list.Insert(it, { 10,"Test" });
-			list.Insert(it, { 20,"Test" });
+			list.Insert(it, {10, "Test"});
+			list.Insert(it, {20, "Test"});
 			it = list.GetBegin();
 			list.Delete(it);
 			LinkedList<DATA>::ConstIterator Constit = list.GetConstEnd();
@@ -708,10 +709,11 @@ namespace ex01_DataStructure
 			LinkedList<DATA>::Iterator it2;
 			it = List.GetBegin();
 			it2 = List.GetEnd();
+			it2--;
 			it2 = it;
-			std::string Res = "Test1";
-			EXPECT_EQ(1, (*it2)->Score);
-			EXPECT_EQ(Res, (*it2)->Name);
+			std::string Res = "Test2";
+			EXPECT_EQ(2, (*it2).Score);
+			EXPECT_EQ(Res, (*it2).Name);
 		}
 
 		/**********************************************************************************//**
@@ -808,13 +810,13 @@ namespace ex01_DataStructure
 		{
 			LinkedList<DATA> List;
 			LinkedList<DATA>::Iterator it = List.GetBegin();
-			List.Insert(it, { 10,"Test1" });
+			List.Insert(it, {10, "Test1"});
 			List.Insert(it, {20, "Test2"});
 			it = List.GetBegin();
 			it++;
-			std::string Res = "Test2";
-			EXPECT_EQ(20, (*it)->Score);
-			EXPECT_EQ(Res, (*it)->Name);
+			std::string Res = "Test1";
+			EXPECT_EQ(10, (*it).Score);
+			EXPECT_EQ(Res, (*it).Name);
 		}
 
 		/**********************************************************************************//**
@@ -828,13 +830,16 @@ namespace ex01_DataStructure
 		{
 			LinkedList<DATA> List;
 			LinkedList<DATA>::Iterator it = List.GetBegin();
-			List.Insert(it, { 10,"Test1" });
+			List.Insert(it, {10, "Test1"});
 			List.Insert(it, {20, "Test2"});
 			it = List.GetBegin();
-			++it;
-			std::string Res = "Test2";
-			EXPECT_EQ(20, (*it)->Score);
-			EXPECT_EQ(Res, (*it)->Name);
+			//++it;
+			DATA TestData;
+			TestData = (*(++it));
+			EXPECT_EQ(10, TestData.Score);
+			EXPECT_EQ("Test1", TestData.Name);
+			EXPECT_EQ(10, (*it).Score);
+			EXPECT_EQ("Test1", (*it).Name);
 		}
 
 		/**********************************************************************************//**
@@ -848,13 +853,15 @@ namespace ex01_DataStructure
 		{
 			LinkedList<DATA> List;
 			LinkedList<DATA>::Iterator it = List.GetBegin();
-			List.Insert(it, { 10,"Test1" });
+			List.Insert(it, {10, "Test1"});
 			List.Insert(it, {20, "Test2"});
 			it = List.GetBegin();
-			it++;
-			std::string Res = "Test2";
-			EXPECT_EQ(20, (*it)->Score);
-			EXPECT_EQ(Res, (*it)->Name);
+			DATA TestData;
+			TestData = (*(it++));
+			EXPECT_EQ(20, TestData.Score);
+			EXPECT_EQ("Test2", TestData.Name);
+			EXPECT_EQ(10, (*it).Score);
+			EXPECT_EQ("Test1", (*it).Name);
 		}
 
 		/**********************************************************************************//**
@@ -917,14 +924,14 @@ namespace ex01_DataStructure
 		{
 			LinkedList<DATA> List;
 			LinkedList<DATA>::Iterator it = List.GetBegin();
-			List.Insert(it, { 10,"Test1" });
+			List.Insert(it, {10, "Test1"});
 			List.Insert(it, {20, "Test2"});
 			it = List.GetEnd();
 			it--;
 			it--;
-			std::string Res = "Test1";
-			EXPECT_EQ(10, (*it)->Score);
-			EXPECT_EQ(Res, (*it)->Name);
+			std::string Res = "Test2";
+			EXPECT_EQ(20, (*it).Score);
+			EXPECT_EQ(Res, (*it).Name);
 		}
 
 		/**********************************************************************************//**
@@ -938,17 +945,16 @@ namespace ex01_DataStructure
 		{
 			LinkedList<DATA> List;
 			LinkedList<DATA>::Iterator it = List.GetBegin();
-			List.Insert(it, { 10,"Test1" });
+			List.Insert(it, {10, "Test1"});
 			List.Insert(it, {20, "Test2"});
 			it = List.GetEnd();
 			it--;
-			std::string Res = "Test2";
-			EXPECT_EQ(20, (*it)->Score);
-			EXPECT_EQ(Res, (*it)->Name);
-			--it;
-			Res = "Test1";
-			EXPECT_EQ(10, (*it)->Score);
-			EXPECT_EQ(Res, (*it)->Name);
+			DATA TestData;
+			TestData = (*(--it));
+			EXPECT_EQ(20, TestData.Score);
+			EXPECT_EQ("Test2", TestData.Name);
+			EXPECT_EQ(20, (*it).Score);
+			EXPECT_EQ("Test2", (*it).Name);
 		}
 
 		/**********************************************************************************//**
@@ -962,17 +968,16 @@ namespace ex01_DataStructure
 		{
 			LinkedList<DATA> List;
 			LinkedList<DATA>::Iterator it = List.GetBegin();
-			List.Insert(it, { 10,"Test1" });
+			List.Insert(it, {10, "Test1"});
 			List.Insert(it, {20, "Test2"});
 			it = List.GetEnd();
 			it--;
-			std::string Res = "Test2";
-			EXPECT_EQ(20, (*it)->Score);
-			EXPECT_EQ(Res, (*it)->Name);
-			it--;
-			Res = "Test1";
-			EXPECT_EQ(10, (*it)->Score);
-			EXPECT_EQ(Res, (*it)->Name);
+			DATA TestData;
+			TestData = (*(it--));
+			EXPECT_EQ(10, TestData.Score);
+			EXPECT_EQ("Test1", TestData.Name);
+			EXPECT_EQ(20, (*it).Score);
+			EXPECT_EQ("Test2", (*it).Name);
 		}
 
 		/**********************************************************************************//**
@@ -986,11 +991,11 @@ namespace ex01_DataStructure
 		{
 			LinkedList<DATA> List;
 			LinkedList<DATA>::Iterator it = List.GetBegin();
-			List.Insert(it, { 10,"Test" });
+			List.Insert(it, {10, "Test"});
 			LinkedList<DATA>::ConstIterator constit;
 			constit = List.GetConstBegin();
 			LinkedList<DATA>::ConstIterator constit2(constit);
-			int num = (*constit2)->Score;
+			int num = (*constit2).Score;
 			EXPECT_EQ(10, num);
 		}
 
@@ -1005,19 +1010,19 @@ namespace ex01_DataStructure
 		{
 			LinkedList<DATA> List;
 			LinkedList<DATA>::Iterator it = List.GetBegin();
-			List.Insert(it, { 10,"Test1" });
+			List.Insert(it, {10, "Test1"});
 			List.Insert(it, {20, "Test2"});
 			it = List.GetBegin();
 			LinkedList<DATA>::Iterator it2;
 			it2 = List.GetEnd();
 			it2--;
-			EXPECT_EQ(20, (*it2)->Score);
-			std::string Res = "Test2";
-			EXPECT_EQ(Res, (*it2)->Name);
+			std::string Res = "Test1";
+			EXPECT_EQ(10, (*it2).Score);
+			EXPECT_EQ(Res, (*it2).Name);
 			it2 = it;
-			Res = "Test1";
-			EXPECT_EQ(10, (*it2)->Score);
-			EXPECT_EQ(Res, (*it2)->Name);
+			Res = "Test2";
+			EXPECT_EQ(20, (*it2).Score);
+			EXPECT_EQ(Res, (*it2).Name);
 		}
 
 		/**********************************************************************************//**
@@ -1051,7 +1056,7 @@ namespace ex01_DataStructure
 		{
 			LinkedList<DATA> List;
 			LinkedList<DATA>::Iterator it = List.GetBegin();
-			List.Insert(it, { 10,"Test" });
+			List.Insert(it, {10, "Test"});
 			LinkedList<DATA>::Iterator it2;
 			it = List.GetBegin();
 			it2 = List.GetBegin();
@@ -1072,8 +1077,8 @@ namespace ex01_DataStructure
 		{
 			LinkedList<DATA> List;
 			LinkedList<DATA>::Iterator it = List.GetBegin();
-			List.Insert(it, { 10,"Test" });
-			List.Insert(it, { 20,"Test" });
+			List.Insert(it, {10, "Test"});
+			List.Insert(it, {20, "Test"});
 			LinkedList<DATA>::Iterator it2;
 			it = List.GetBegin();
 			it2 = List.GetEnd();
@@ -1112,7 +1117,7 @@ namespace ex01_DataStructure
 		{
 			LinkedList<DATA> List;
 			LinkedList<DATA>::Iterator it = List.GetBegin();
-			List.Insert(it, { 10,"Test" });
+			List.Insert(it, {10, "Test"});
 			LinkedList<DATA>::Iterator it2;
 			it = List.GetBegin();
 			it2 = List.GetBegin();
@@ -1133,8 +1138,8 @@ namespace ex01_DataStructure
 		{
 			LinkedList<DATA> List;
 			LinkedList<DATA>::Iterator it = List.GetBegin();
-			List.Insert(it, { 10,"Test" });
-			List.Insert(it, { 20,"Test" });
+			List.Insert(it, {10, "Test"});
+			List.Insert(it, {20, "Test"});
 			LinkedList<DATA>::Iterator it2;
 			it = List.GetBegin();
 			it2 = List.GetEnd();
@@ -1144,5 +1149,6 @@ namespace ex01_DataStructure
 			EXPECT_EQ(true, IsTrue);
 		}
 
+	}
 
 }
