@@ -203,29 +203,29 @@ public:
         LinkedList::Iterator() {}
 
         //オペレータ
-        /*
-         * イテレータを末尾に向かって進めるオペレータです(前置インクリメント)
-         * @return 次のノードを取得したイテレータを返します
-        */
-        LinkedList::Iterator& operator++();
+        ///*
+        // * イテレータを末尾に向かって進めるオペレータです(前置インクリメント)
+        // * @return 次のノードを取得したイテレータを返します
+        //*/
+        //LinkedList::Iterator& operator++();
 
-        /*
-         * イテレータを末尾に向かって進めるオペレータです(後置インクリメント)
-         * @return 次のノードを取得したイテレータを返します
-        */
-        LinkedList::Iterator operator++(int);
+        ///*
+        // * イテレータを末尾に向かって進めるオペレータです(後置インクリメント)
+        // * @return 次のノードを取得したイテレータを返します
+        //*/
+        //LinkedList::Iterator operator++(int);
 
-        /*
-         * イテレータを先頭に向かって進めるオペレータです(前置インクリメント)
-         * @return 前ノードを取得したイテレータを返します
-        */
-        LinkedList::Iterator& operator--();
+        ///*
+        // * イテレータを先頭に向かって進めるオペレータです(前置インクリメント)
+        // * @return 前ノードを取得したイテレータを返します
+        //*/
+        //LinkedList::Iterator& operator--();
 
-        /*
-         * イテレータを先頭に向かって進めるオペレータです(後置インクリメント)
-         * @return 前のノードを取得したイテレータを返します
-        */
-        LinkedList::Iterator operator--(int);
+        ///*
+        // * イテレータを先頭に向かって進めるオペレータです(後置インクリメント)
+        // * @return 前のノードを取得したイテレータを返します
+        //*/
+        //LinkedList::Iterator operator--(int);
 
         /*
          * イテレータのさす要素を取得する(非const)関数です。

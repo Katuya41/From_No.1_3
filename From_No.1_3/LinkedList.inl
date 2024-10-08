@@ -139,6 +139,8 @@ typename bool LinkedList<T>::ConstIterator::IsEmpty() { return Node == nullptr; 
 template <typename T>
 typename LinkedList<T>::ConstIterator& LinkedList<T>::ConstIterator::operator++()
 {
+    assert(this->Node != nullptr && "Iterator points to null!");
+    assert(this->Node->Data != nullptr && "Iterator points to Dummy!");
     this->Node = Node->Next;
     return *this;
 }
@@ -150,6 +152,8 @@ typename LinkedList<T>::ConstIterator& LinkedList<T>::ConstIterator::operator++(
 template <typename T>
 typename LinkedList<T>::ConstIterator LinkedList<T>::ConstIterator::operator++(int)
 {
+    assert(this->Node != nullptr && "Iterator points to null!");
+    assert(this->Node->Data != nullptr && "Iterator points to Dummy!");
     LinkedList::Iterator it;
     it.Node = Node;
     Node = Node->Next;
@@ -162,6 +166,8 @@ typename LinkedList<T>::ConstIterator LinkedList<T>::ConstIterator::operator++(i
 */
 template <typename T>
 typename LinkedList<T>::ConstIterator& LinkedList<T>::ConstIterator::operator--() {
+    assert(this->Node != nullptr && "Iterator points to null!");
+    assert(this->Node->Prev->Data != nullptr && "Iterator points to Dummy!");
     this->Node = Node->Prev;
     return *this;
 }
@@ -172,6 +178,8 @@ typename LinkedList<T>::ConstIterator& LinkedList<T>::ConstIterator::operator--(
 */
 template <typename T>
 typename LinkedList<T>::ConstIterator LinkedList<T>::ConstIterator::operator--(int) {
+    assert(this->Node != nullptr && "Iterator points to null!");
+    assert(this->Node->Prev->Data != nullptr && "Iterator points to Dummy!");
     LinkedList::Iterator it;
     it.Node = Node;
     Node = Node->Prev;
@@ -218,58 +226,6 @@ bool LinkedList<T>::ConstIterator::operator!=(const LinkedList<T>::ConstIterator
 }
 
 //イテレータクラスのオペレータ
-/*
-* イテレータを末尾に向かって進めるオペレータです(前置インクリメント)
-* @return 次のノードを取得したイテレータを返します
-*/
-template <typename T>
-typename LinkedList<T>::Iterator& LinkedList<T>::Iterator::operator++() {
-    assert(this->Node != nullptr && "Iterator points to null!");
-    assert(this->Node->Data != nullptr && "Iterator points to Dummy!");
-    this->Node = this->Node->Next;
-    return *this;
-}
-
-/*
- * イテレータを末尾に向かって進めるオペレータです(後置インクリメント)
- * @return 次のノードを取得したイテレータを返します
-*/
-template <typename T>
-typename LinkedList<T>::Iterator LinkedList<T>::Iterator::operator++(int) {
-    assert(this->Node != nullptr && "Iterator points to null!");
-    assert(this->Node->Data != nullptr && "Iterator points to Dummy!");
-    LinkedList::Iterator it;
-    it.Node = this->Node;
-    this->Node = this->Node->Next;
-    return it;
-}
-
-/*
- * イテレータを先頭に向かって進めるオペレータです(前置インクリメント)
- * @return 前ノードを取得したイテレータを返します
-*/
-template <typename T>
-typename LinkedList<T>::Iterator& LinkedList<T>::Iterator::operator--() {
-    assert(this->Node != nullptr && "Iterator points to null!");
-    assert(this->Node->Prev->Data != nullptr && "Iterator points to Dummy!");
-    this->Node = this->Node->Prev;
-    return *this;
-}
-
-/*
- * イテレータを先頭に向かって進めるオペレータです(後置インクリメント)
- * @return 前のノードを取得したイテレータを返します
-*/
-template <typename T>
-typename LinkedList<T>::Iterator LinkedList<T>::Iterator::operator--(int) {
-    assert(this->Node != nullptr && "Iterator points to null!");
-    assert(this->Node->Prev->Data != nullptr && "Iterator points to Dummy!");
-    LinkedList::Iterator it;
-    it.Node = this->Node;
-    this->Node = this->Node->Prev;
-    return it;
-}
-
 /*
  * イテレータのさす要素を取得する(非const)関数です。
  * @return イテレータの要素を返します
