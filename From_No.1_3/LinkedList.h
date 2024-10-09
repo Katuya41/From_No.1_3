@@ -33,11 +33,11 @@ private:
     {
         NODE* Prev = nullptr;     //一個前のノード
         NODE* Next = nullptr;     //次のノード
-        T* Data = nullptr;             //データ
+        T Data = T();             //データ
     };
 
     //ダミーノード
-    NODE Dummy;
+    static NODE* Dummy;
 
     //データの数
     int DataNum = 0;
@@ -47,7 +47,7 @@ public:
      * LinkedListクラスのコンストラクタ。
      * 初期化処理を行います。
      */
-    LinkedList() { Dummy.Next = Dummy.Prev = &Dummy; }
+    LinkedList();
     ~LinkedList() {}
 
     /**
@@ -62,7 +62,7 @@ public:
     * @param _score  受け取ったデータのスコア
     * @param _name   受け取ったデータの名前
     */
-    bool Insert(LinkedList<T>::ConstIterator& _it,T& _data);
+    bool Insert(LinkedList<T>::ConstIterator& _it, const T& _data);
 
     /**
     * コンストイテレータを使用してリストの要素を削除する関数です。
@@ -118,6 +118,8 @@ public:
     private:
         friend class LinkedList;
 
+        bool IsDummy() const;
+
     protected:
         //ノード
         NODE* Node = nullptr;
@@ -161,16 +163,23 @@ public:
          * @return ノードを返します
         */
         const T& operator*() const;
+
+        bool operator!=(NODE& _node) const
+        {
+            if (Node != _node)
+                return true;
+            return false;
+        }
         /*
          * コピ－コンストラクタです
         */
-        LinkedList::ConstIterator(const LinkedList::ConstIterator& _constit) : Node(_constit.Node) {}
+        LinkedList::ConstIterator(const LinkedList::Iterator& _constit) : Node(_constit.Node) {}
 
         /*
          * 代入するオペレータです
          *@return コンストイテレータを返します
         */
-        LinkedList::ConstIterator operator=(const Iterator _it);
+        LinkedList::ConstIterator& operator=(const Iterator& _it);
 
         /*
          * 比較するオペレータです

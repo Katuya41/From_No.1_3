@@ -33,11 +33,11 @@ private:
     {
         NODE* Prev = nullptr;     //一個前のノード
         NODE* Next = nullptr;     //次のノード
-        T* Data = nullptr;             //データ
+        T Data = T();             //データ
     };
-
+    
     //ダミーノード
-    NODE Dummy;
+    static NODE* Dummy;
 
     //データの数
     int DataNum = 0;
@@ -47,7 +47,7 @@ public:
      * LinkedListクラスのコンストラクタ。
      * 初期化処理を行います。
      */
-    LinkedList() { Dummy.Next = Dummy.Prev = &Dummy; }
+    LinkedList();
     ~LinkedList() {}
 
     /**
@@ -118,6 +118,8 @@ public:
     private:
         friend class LinkedList;
 
+        bool IsDummy() const ;
+
     protected:
         //ノード
         NODE* Node = nullptr;
@@ -161,6 +163,13 @@ public:
          * @return ノードを返します
         */
         const T& operator*() const;
+
+        bool operator!=(NODE& _node) const
+        {
+            if (Node != _node)
+                return true;
+            return false;
+        }
         /*
          * コピ－コンストラクタです
         */
@@ -170,7 +179,7 @@ public:
          * 代入するオペレータです
          *@return コンストイテレータを返します
         */
-        LinkedList::ConstIterator operator=(const Iterator _it);
+        LinkedList::ConstIterator& operator=(const Iterator& _it);
 
         /*
          * 比較するオペレータです
