@@ -95,6 +95,18 @@ public:
     LinkedList<T>::ConstIterator GetConstEnd();
 
     /*
+    * 範囲forに対応するbegin関数です。
+    * @return 先頭イテレータ
+    */
+    Iterator begin();
+
+    /*
+    * 範囲forに対応するend関数です。
+    * @return 末尾イテレータ
+    */
+    Iterator end();
+
+    /*
     * これはConstIteratorクラスの説明です。
     * このクラスは双方向リストで使用されます。
     *

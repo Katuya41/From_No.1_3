@@ -67,6 +67,8 @@ typename LinkedList<T>::Iterator LinkedList<T>::GetBegin() {
     return it;
 }
 
+
+
 /*
 * 先頭コンストイテレータを取得する関数です。
 * @return 先頭コンストイテレータ
@@ -97,6 +99,23 @@ template <typename T>
 typename LinkedList<T>::ConstIterator LinkedList<T>::GetConstEnd() {
     LinkedList<T>::ConstIterator it;
     it.Node = &Dummy;
+    return it;
+}
+
+
+template<typename T>
+typename LinkedList<T>::Iterator LinkedList<T>::begin()
+{
+    LinkedList<T>::Iterator it;
+    it = GetBegin();
+    return it;
+}
+
+template<typename T>
+typename LinkedList<T>::Iterator LinkedList<T>::end()
+{
+    LinkedList<T>::Iterator it;
+    it = GetEnd();
     return it;
 }
 

@@ -101,6 +101,30 @@ typename LinkedList<T>::ConstIterator LinkedList<T>::GetConstEnd() {
 }
 
 /*
+* 範囲forに対応するbegin関数です。
+* @return 先頭イテレータ
+*/
+template<typename T>
+typename LinkedList<T>::Iterator LinkedList<T>::begin()
+{
+    LinkedList<T>::Iterator it;
+    it = GetBegin();
+    return it;
+}
+
+/*
+* 範囲forに対応するend関数です。
+* @return 末尾イテレータ
+*/
+template<typename T>
+typename LinkedList<T>::Iterator LinkedList<T>::end()
+{
+    LinkedList<T>::Iterator it;
+    it = GetEnd();
+    return it;
+}
+
+/*
  * ノードが空か調べます
  * @return ノードが空かどうかを返します
 */

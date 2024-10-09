@@ -36,10 +36,15 @@ int main(void)
 
     //リストの中身を最初から末尾まで表示
     //Display(List);
-    it = List.GetBegin();
-    for (it == List.GetBegin(); it != List.GetEnd(); it++)
+    //it = List.GetBegin();
+    //for (it == List.GetBegin(); it != List.GetEnd(); it++)
+    //{
+    //    printf("スコア: %d ,名前: %s \n", (*it).Score, (*it).Name.c_str());
+    //}
+
+    for (DATA Data: List)
     {
-        printf("スコア: %d ,名前: %s \n", (*it).Score, (*it).Name.c_str());
+        printf("スコア: %d ,名前: %s \n", Data.Score, Data.Name.c_str());
     }
 
     file.close();
