@@ -12,6 +12,8 @@ template<typename T>
 inline LinkedList<T>::~LinkedList()
 {
     Clear();
+
+    delete Dummy;
 }
 
 /**
@@ -70,9 +72,9 @@ bool LinkedList<T>::Delete(LinkedList<T>::ConstIterator& _it)
 template<typename T>
 inline void LinkedList<T>::Clear()
 {
-    if (Dummy == Dummy->Prev)
+    //中身がダミーノードしかないなら終了
+    if (Dummy == GetBegin().Node)
     {
-        delete Dummy;
         return;
     }
 
@@ -85,8 +87,9 @@ inline void LinkedList<T>::Clear()
         Current = NextNode; // 次のノードに進む
     } while (Current != Dummy); // リストが一巡したら終了
 
+    Dummy->Next = Dummy->Prev = Dummy;
+
     DataNum = 0;
-    delete Dummy;
 }
 
 /*

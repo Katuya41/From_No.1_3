@@ -1149,6 +1149,13 @@ namespace ex01_DataStructure
 			EXPECT_EQ(true, IsTrue);
 		}
 
+		/**********************************************************************************//**
+			@brief		異なるリストを使用した場合の返り値を確認する挙動テスト
+			@details	ID:Iterator-26\n
+						異なるリストを使用した場合の返り値を確認するテストです。\n
+						異なるリストを使用した場合の返り値を確認しています。\n
+						1なら成功です。\n
+		*//***********************************************************************************/
 		TEST(ListBugTest, DummyTest)
 		{
 			LinkedList<int> list1;
@@ -1160,6 +1167,23 @@ namespace ex01_DataStructure
 			list2.Insert(list2.GetBegin(), 2);
 
 			EXPECT_EQ(1, *(--list1.GetEnd()));
+		}
+
+		/**********************************************************************************//**
+			@brief		リストをクリアしたあとに挿入した際の挙動テスト
+			@details	ID:Iterator-26\n
+						リストをクリアしたあとに挿入できるかを確認するテストです。\n
+						リストをクリアしたあとに挿入した際の挙動を確認しています。\n
+						1なら成功です。\n
+		*//***********************************************************************************/
+		TEST(ListTest, ClearTest) {
+			LinkedList<int> list;
+
+			list.Insert(list.GetBegin(), 1);
+			list.Clear();
+			list.Insert(list.GetBegin(), 1);
+
+			EXPECT_EQ(1, *list.GetBegin());
 		}
 
 	}
