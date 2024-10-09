@@ -49,5 +49,7 @@ int main(void)
 
     file.close();
 
+    List.Clear();
+
 	return 0;
 }

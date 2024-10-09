@@ -8,6 +8,12 @@ inline LinkedList<T>::LinkedList()
     Dummy->Next = Dummy->Prev = Dummy;
 }
 
+template<typename T>
+inline LinkedList<T>::~LinkedList()
+{
+    Clear();
+}
+
 /**
  * データ数を返す関数です。
  * 現在のデータ数を返します
@@ -59,6 +65,28 @@ bool LinkedList<T>::Delete(LinkedList<T>::ConstIterator& _it)
         return true;
     }
     return false;
+}
+
+template<typename T>
+inline void LinkedList<T>::Clear()
+{
+    if (Dummy == Dummy->Prev)
+    {
+        delete Dummy;
+        return;
+    }
+
+    NODE* Current = Dummy->Next;
+    NODE* NextNode;
+
+    do {
+        NextNode = Current->Next; // 次のノードを保存
+        delete Current; // 現在のノードを解放
+        Current = NextNode; // 次のノードに進む
+    } while (Current != Dummy); // リストが一巡したら終了
+
+    DataNum = 0;
+    delete Dummy;
 }
 
 /*
