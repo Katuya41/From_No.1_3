@@ -3,7 +3,6 @@
 #define LINKED_LIST_H
 //#include <string>
 
-#include"main.h"
 #include <cassert>
 
 /**
