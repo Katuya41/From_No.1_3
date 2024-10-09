@@ -24,7 +24,7 @@ namespace ex01_DataStructure
 						データ数が0であれば成功です。\n
 		*//***********************************************************************************/
 		TEST(GetDataNumTest, TestGetDataNumWhenEmpty) {
-			LinkedList<DATA> list;
+			LinkedList<int> list;
 			EXPECT_EQ(0, list.GetDataNum());
 		}
 
@@ -37,11 +37,6 @@ namespace ex01_DataStructure
 		 *//***********************************************************************************/
 		TEST(GetDataNumTest, TestGetDataNumAfterPush)
 		{
-			//LinkedList<DATA> list;
-			//LinkedList<DATA>::Iterator it = list.GetBegin();
-			//list.Insert(it, {1, "Test"});
-			//EXPECT_EQ(1, list.GetDataNum());
-
 			LinkedList<int> list;
 			LinkedList<int>::Iterator it = list.GetBegin();
 			list.Insert(it, 1);
@@ -291,8 +286,8 @@ namespace ex01_DataStructure
 			LinkedList<DATA>::Iterator it = list.GetBegin();
 			list.Insert(it, {10, "Test"});
 			list.Insert(it, {20, "Test"});
-			it = list.Getend();
-			EXPECT_EQ(true, list.Delete(it));
+			it = list.GetEnd();
+			EXPECT_EQ(true, list.Delete(--it));
 		}
 
 		/**********************************************************************************//**
@@ -1014,19 +1009,19 @@ namespace ex01_DataStructure
 		TEST(AssignmentTest, TestAssignment)
 		{
 			LinkedList<DATA> List;
-			LinkedList<DATA>::Iterator it = List.GetBegin();
-			List.Insert(it, {10, "Test1"});
-			List.Insert(it, {20, "Test2"});
-			it = List.GetBegin();
+			LinkedList<DATA>::ConstIterator Constit = List.GetConstBegin();
+			List.Insert(Constit, {10, "Test1"});
+			List.Insert(Constit, {20, "Test2"});
+			Constit = List.GetConstBegin();
 			LinkedList<DATA>::Iterator it2;
 			it2 = List.GetEnd();
 			it2--;
 			std::string Res = "Test1";
 			EXPECT_EQ(10, (*it2).Score);
 			EXPECT_EQ(Res, (*it2).Name);
-			it2 = it;
-			Res = "Test2";
-			EXPECT_EQ(20, (*it2).Score);
+			Constit = it2;
+			Res = "Test1";
+			EXPECT_EQ(10, (*it2).Score);
 			EXPECT_EQ(Res, (*it2).Name);
 		}
 

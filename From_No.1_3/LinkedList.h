@@ -89,22 +89,10 @@ public:
     LinkedList<T>::Iterator GetEnd();
 
     /*
-    * 末尾イテレータを取得する関数です。
-    * @return 末尾イテレータ
-    */
-    LinkedList<T>::Iterator Getend();
-
-    /*
      * 末尾コンストイテレータを取得する関数です。
      * @return ダミーノード
      */
     LinkedList<T>::ConstIterator GetConstEnd();
-
-    /*
-     * 末尾コンストイテレータを取得する関数です。
-     * @return 末尾イテレータ
-     */
-    LinkedList<T>::ConstIterator GetConstend();
 
     /*
     * これはConstIteratorクラスの説明です。
@@ -170,7 +158,7 @@ public:
          * 代入するオペレータです
          *@return コンストイテレータを返します
         */
-        LinkedList::ConstIterator operator=(const Iterator* _it);
+        LinkedList::ConstIterator operator=(const Iterator _it);
 
         /*
          * 比較するオペレータです

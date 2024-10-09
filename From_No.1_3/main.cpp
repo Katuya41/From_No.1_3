@@ -21,16 +21,16 @@ int main(void)
 	}
 
     //受け取ったスコアと名前を入れておく変数
-    DATA Data;
-    std::string Res;
+    std::string Res,Name;
     LinkedList<DATA>::Iterator it;
 
-    while (file >> Res >> Data.Name) {
+    while (file >> Res >> Name) {
         // 名前とスコアを表示(確認用)
         //printf("スコア: %s ,名前: %s \n", Score, Name);
         //リストの一番末尾に入れる
+        DATA Data = { std::stoi(Res),Name};
         it = List.GetEnd();
-        Data.Score = std::stoi(Res);
+        //Data.Score = std::stoi(Res);
         List.Insert(it, Data);
     }
 
