@@ -37,7 +37,7 @@ private:
     };
 
     //ダミーノード
-    static NODE* Dummy;
+    NODE* Dummy;
 
     //データの数
     int DataNum = 0;

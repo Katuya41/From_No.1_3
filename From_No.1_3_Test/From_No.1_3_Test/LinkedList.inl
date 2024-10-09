@@ -1,7 +1,5 @@
 #pragma once
 #include"LinkedList.h"
-template<typename T>
-typename LinkedList<T>::NODE* LinkedList<T>::Dummy = nullptr;  // 静的メンバー変数の定義
 
 template<typename T>
 inline LinkedList<T>::LinkedList()
@@ -153,8 +151,8 @@ template <typename T>
 typename LinkedList<T>::ConstIterator& LinkedList<T>::ConstIterator::operator++()
 {
     assert(this->Node != nullptr && "Iterator points to null!");
+    assert(this->Node != this->Node->Next && "Iterator points to Dummy!");
     this->Node = Node->Next;
-    assert(IsDummy() != true && "Iterator points to Dummy!");
     //assert(this->Node->Data != nullptr && "Iterator points to Dummy!");
     return *this;
 }
@@ -167,10 +165,11 @@ template <typename T>
 typename LinkedList<T>::ConstIterator LinkedList<T>::ConstIterator::operator++(int)
 {
     assert(this->Node != nullptr && "Iterator points to null!");
+    assert(this->Node != this->Node->Next && "Iterator points to Dummy!");
     LinkedList::Iterator it;
     it.Node = Node;
     Node = Node->Next;
-    assert(IsDummy() != true && "Iterator points to Dummy!");
+    //assert(IsDummy() != true && "Iterator points to Dummy!");
     //assert(this->Node->Data != nullptr && "Iterator points to Dummy!");
     return it;
 }
@@ -182,8 +181,8 @@ typename LinkedList<T>::ConstIterator LinkedList<T>::ConstIterator::operator++(i
 template <typename T>
 typename LinkedList<T>::ConstIterator& LinkedList<T>::ConstIterator::operator--() {
     assert(this->Node != nullptr && "Iterator points to null!");
+    assert(this->Node != this->Node->Next && "Iterator points to Dummy!");
     this->Node = Node->Prev;
-    assert(this->IsDummy() != true && "Iterator points to Dummy!");
     //assert(this->Node->Prev->Data != nullptr && "Iterator points to Dummy!");
     return *this;
 }
@@ -195,10 +194,11 @@ typename LinkedList<T>::ConstIterator& LinkedList<T>::ConstIterator::operator--(
 template <typename T>
 typename LinkedList<T>::ConstIterator LinkedList<T>::ConstIterator::operator--(int) {
     assert(this->Node != nullptr && "Iterator points to null!");
+    assert(this->Node != this->Node->Next && "Iterator points to Dummy!");
     LinkedList::Iterator it;
     it.Node = Node;
     Node = Node->Prev;
-    assert(IsDummy() != true && "Iterator points to Dummy!");
+    //assert(IsDummy() != true && "Iterator points to Dummy!");
     //assert(this->Node->Prev->Data != nullptr && "Iterator points to Dummy!");
     return it;
 }
@@ -249,7 +249,7 @@ bool LinkedList<T>::ConstIterator::operator!=(const LinkedList<T>::ConstIterator
 template <typename T>
 T& LinkedList<T>::Iterator::operator*() {
     assert(this->Node != nullptr && "Iterator points to null!");
-    assert(IsDummy() != true && "Iterator points to Dummy!");
+    assert(this->Node != this->Node->Next && "Iterator points to Dummy!");
     //assert(this->Node->Data != nullptr && "Iterator points to Dummy!");
     return this->Node->Data;
 }

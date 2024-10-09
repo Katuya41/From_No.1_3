@@ -1149,6 +1149,19 @@ namespace ex01_DataStructure
 			EXPECT_EQ(true, IsTrue);
 		}
 
+		TEST(ListBugTest, DummyTest)
+		{
+			LinkedList<int> list1;
+
+			list1.Insert(list1.GetBegin(), 1);
+			EXPECT_EQ(1, *(--list1.GetEnd()));
+
+			LinkedList<int> list2;
+			list2.Insert(list2.GetBegin(), 2);
+
+			EXPECT_EQ(1, *(--list1.GetEnd()));
+		}
+
 	}
 
 }

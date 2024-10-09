@@ -3,7 +3,6 @@
 #define LINKED_LIST_H
 //#include <string>
 
-#include"pch.h"
 #include <cassert>
 
 /**
@@ -35,9 +34,9 @@ private:
         NODE* Next = nullptr;     //次のノード
         T Data = T();             //データ
     };
-    
+
     //ダミーノード
-    static NODE* Dummy;
+    NODE* Dummy;
 
     //データの数
     int DataNum = 0;
@@ -118,7 +117,7 @@ public:
     private:
         friend class LinkedList;
 
-        bool IsDummy() const ;
+        bool IsDummy() const;
 
     protected:
         //ノード
